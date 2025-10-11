@@ -158,6 +158,8 @@ for episode in range(1000):  # 1000번의 에피소드
 
 <span style="background-color: #90EE90">π(a|s) = P[A<sub>t</sub> = a | S<sub>t</sub> = s]</span>
 
+$\pi(a|s) = P[A_t = a \mid S_t = s]$
+
 **수식 의미:**
 - 상태 s에서 행동 a를 선택할 확률
 
