@@ -27,13 +27,13 @@ Agent(에이전트) ⟷ Environment(환경)
 
 **수식:**
 
-π<sup>\*</sup>(s) = argmax<sub>a</sub> Q<sup>\*</sup>(s,a)
+$$\pi^*(s) = \arg\max_a Q^*(s,a)$$
 
 **의미:**
-- π<sup>\*</sup>(s) : 상태 s에서의 최적 정책 (최적의 행동)
-- argmax<sub>a</sub> : 가장 큰 값을 만드는 행동 a를 선택
-- Q<sup>\*</sup>(s,a) : 상태 s에서 행동 a의 최적 가치
-- <sup>\*</sup> : Optimal(최적의) 라는 뜻
+- $\pi^*(s)$ : 상태 s에서의 최적 정책 (최적의 행동)
+- $\arg\max_a$ : 가장 큰 값을 만드는 행동 a를 선택
+- $Q^*(s,a)$ : 상태 s에서 행동 a의 최적 가치
+- $*$ : Optimal(최적의) 라는 뜻
 - **해석**: 각 상태에서 Q값이 가장 높은 행동을 선택하는 것이 최적 정책!
 
 ---
@@ -156,7 +156,7 @@ for episode in range(1000):  # 1000번의 에피소드
 
 **수식:**
 
-<span style="background-color: #90EE90">π(a|s) = P[A<sub>t</sub> = a | S<sub>t</sub> = s]</span>
+$$\pi(a|s) = P[A_t = a \mid S_t = s]$$
 
 $\pi(a|s) = P[A_t = a \mid S_t = s]$
 
@@ -167,14 +167,14 @@ $\pi(a|s) = P[A_t = a \mid S_t = s]$
 
 1. **Deterministic Policy (결정적 정책)**
    
-   a = π(s)
+   $$a = \pi(s)$$
    
    - 상태 s가 주어지면 항상 같은 행동 a를 선택
    - 예: "출구가 오른쪽에 있으면 항상 오른쪽으로 이동"
 
 2. **Stochastic Policy (확률적 정책)**
    
-   π(a|s) = P[A<sub>t</sub> = a | S<sub>t</sub> = s]
+   $$\pi(a|s) = P[A_t = a \mid S_t = s]$$
    
    - 상태 s에서 여러 행동 중 확률적으로 선택
    - 예: "70% 확률로 오른쪽, 30% 확률로 왼쪽"
@@ -213,18 +213,18 @@ else:
 
 **수식:**
 
-<span style="background-color: #90EE90">V<sup>π</sup>(s) = E<sub>π</sub>[ G<sub>t</sub> | S<sub>t</sub> = s ]</span>
+$$V^{\pi}(s) = \mathbb{E}_{\pi}[ G_t \mid S_t = s ]$$
 
 **수식 의미:**
-- G<sub>t</sub> : Return (누적 보상) = Σ γ<sup>t</sup> × r<sub>t</sub>
-- S<sub>t</sub> = s : 시간 t에서 상태가 s일 때
+- $G_t$ : Return (누적 보상) = $\sum \gamma^t \times r_t$
+- $S_t = s$ : 시간 t에서 상태가 s일 때
 - "상태 s에서의 가치는 그 상태에서 얻을 수 있는 누적 보상의 기댓값"
 
 **풀어 쓰면:**
 
-V<sup>π</sup>(s) = E<sub>π</sub>[ Σ γ<sup>t</sup> × r<sub>t</sub> | s<sub>0</sub> = s ]
+$$V^{\pi}(s) = \mathbb{E}_{\pi}\left[ \sum_{t=0}^{\infty} \gamma^t r_t \mid s_0 = s \right]$$
 
-V<sup>π</sup>(s) = E<sub>π</sub>[ r<sub>0</sub> + γ×r<sub>1</sub> + γ<sup>2</sup>×r<sub>2</sub> + γ<sup>3</sup>×r<sub>3</sub> + ... | s<sub>0</sub> = s ]
+$$V^{\pi}(s) = \mathbb{E}_{\pi}\left[ r_0 + \gamma r_1 + \gamma^2 r_2 + \gamma^3 r_3 + \cdots \mid s_0 = s \right]$$
 
 **의미:**
 - 상태 s에서 시작해서 정책 π를 따를 때
@@ -239,19 +239,19 @@ V<sup>π</sup>(s) = E<sub>π</sub>[ r<sub>0</sub> + γ×r<sub>1</sub> + γ<sup>2
 
 **수식:**
 
-<span style="background-color: #90EE90">q<sup>π</sup>(s,a) = E<sub>π</sub>[ G<sub>t</sub> | S<sub>t</sub> = s, A<sub>t</sub> = a ] </span>
+$$q^{\pi}(s,a) = \mathbb{E}_{\pi}[ G_t \mid S_t = s, A_t = a ]$$
 
 **수식 의미:**
-- G<sub>t</sub> : Return (누적 보상) = Σ γ<sup>t</sup> × r<sub>t</sub>
-- S<sub>t</sub> = s : 시간 t에서 상태가 s일 때
-- A<sub>t</sub> = a : 시간 t에서 행동이 a일 때
+- $G_t$ : Return (누적 보상) = $\sum \gamma^t \times r_t$
+- $S_t = s$ : 시간 t에서 상태가 s일 때
+- $A_t = a$ : 시간 t에서 행동이 a일 때
 - "상태 s에서 행동 a를 했을 때의 가치는 그때부터 얻을 수 있는 누적 보상의 기댓값"
 
 **풀어 쓰면:**
 
-Q<sup>π</sup>(s,a) = E<sub>π</sub>[ Σ γ<sup>t</sup> × r<sub>t</sub> | s<sub>0</sub> = s, a<sub>0</sub> = a ]
+$$Q^{\pi}(s,a) = \mathbb{E}_{\pi}\left[ \sum_{t=0}^{\infty} \gamma^t r_t \mid s_0 = s, a_0 = a \right]$$
 
-Q<sup>π</sup>(s,a) = E<sub>π</sub>[ r<sub>0</sub> + γ×r<sub>1</sub> + γ<sup>2</sup>×r<sub>2</sub> + γ<sup>3</sup>×r<sub>3</sub> + ... | s<sub>0</sub> = s, a<sub>0</sub> = a ]
+$$Q^{\pi}(s,a) = \mathbb{E}_{\pi}\left[ r_0 + \gamma r_1 + \gamma^2 r_2 + \gamma^3 r_3 + \cdots \mid s_0 = s, a_0 = a \right]$$
 
 **의미:**
 - 상태 s에서 행동 a를 선택하고
@@ -260,14 +260,14 @@ Q<sup>π</sup>(s,a) = E<sub>π</sub>[ r<sub>0</sub> + γ×r<sub>1</sub> + γ<sup
 
 **Q-Learning 업데이트 수식:**
 
-Q(s,a) ← Q(s,a) + α × [ r + γ × max<sub>a'</sub> Q(s',a') - Q(s,a) ]
+$$Q(s,a) \leftarrow Q(s,a) + \alpha \left[ r + \gamma \max_{a'} Q(s',a') - Q(s,a) \right]$$
 
 **각 항의 의미:**
-- Q(s,a) : 현재 추정치 (지금까지의 추정)
-- α : 학습률 (얼마나 빨리 업데이트할지)
-- r : 즉각적인 보상
-- γ × max<sub>a'</sub> Q(s',a') : 다음 상태에서 얻을 수 있는 최대 가치
-- [ ... ] : TD Error (시간차 오차) = 실제 - 예측
+- $Q(s,a)$ : 현재 추정치 (지금까지의 추정)
+- $\alpha$ : 학습률 (Learning Rate, 얼마나 빨리 업데이트할지)
+- $r$ : 즉각적인 보상 (Immediate Reward)
+- $\gamma \max_{a'} Q(s',a')$ : 다음 상태에서 얻을 수 있는 최대 가치
+- $\left[ \cdots \right]$ : TD Error (시간차 오차) = 실제 - 예측
 
 ---
 
@@ -288,7 +288,7 @@ Q(s,a) ← Q(s,a) + α × [ r + γ × max<sub>a'</sub> Q(s',a') - Q(s,a) ]
 
 **1. Transition Model (전이 모델):**
 
-P<sup>a</sup><sub>ss'</sub> = Pr[ S<sub>t+1</sub> = s' | S<sub>t</sub> = s, A<sub>t</sub> = a ]
+$$P^a_{ss'} = \Pr[ S_{t+1} = s' \mid S_t = s, A_t = a ]$$
 
 **의미:** 상태 s에서 행동 a를 했을 때 상태 s'로 이동할 확률
 
@@ -298,7 +298,7 @@ P<sup>a</sup><sub>ss'</sub> = Pr[ S<sub>t+1</sub> = s' | S<sub>t</sub> = s, A<su
 
 **2. Reward Model (보상 모델):**
 
-R<sup>a</sup><sub>s</sub> = E[ R<sub>t+1</sub> | S<sub>t</sub> = s, A<sub>t</sub> = a ]
+$$R^a_s = \mathbb{E}[ R_{t+1} \mid S_t = s, A_t = a ]$$
 
 **의미:** 상태 s에서 행동 a를 했을 때 받을 평균 보상
 
