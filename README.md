@@ -27,7 +27,7 @@ Agent(에이전트) ⟷ Environment(환경)
 
 **수식:**
 
-$$\pi^*(s) = \arg\max_a Q^*(s,a)$$
+$$\pi^{*}(s) = \arg\max_a Q^{*}(s,a)$$
 
 **의미:**
 - $\pi^*(s)$ : 상태 s에서의 최적 정책 (최적의 행동)
