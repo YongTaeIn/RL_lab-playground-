@@ -687,8 +687,8 @@ Agent의 3가지 요소(Policy, Value Function, Model)를 어떻게 조합하느
 ## 추가 예정.
 0. Q-learning 내용 순서 알맞게 다시 작성해서 반영하기 (완료)
 1. MDP (완료)
-2. Q-learning
-3. DQN
+2. Q-learning (완료 25.10.17)
+3. DQN (완료 25.10.23)
 4. PPO
 
 
